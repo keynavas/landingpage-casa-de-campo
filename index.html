@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Casa de campo à venda</title>
+<meta name="description" content="Casa de campo contemporânea à venda, em concreto, vidro e madeira, cercada por jardins. Agende uma visita.">
+<meta property="og:title" content="Casa de campo à venda">
+<meta property="og:description" content="Arquitetura contemporânea cercada por jardins.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="./assets/images/fachada-principal.jpg">
+<link rel="preload" as="image" href="./assets/hero-frames/f001.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;family=Jost:wght@200;300;400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth;color-scheme:dark}
+body{margin:0;background:#0A0A0A;color:#fff;font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}
+a{color:#fff;text-underline-offset:4px}
+a:hover{color:#D6D6D3}
+:focus-visible{outline:2px solid #fff;outline-offset:3px}
+option{background:#151515;color:#fff}
+input,select,textarea,button{font:inherit}
+@keyframes railFlow{0%{top:-30%}100%{top:100%}}
+@keyframes railPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.7);opacity:.55}}
+@keyframes scrollCue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:radial-gradient(60% 45% at 85% 8%,rgba(255,255,255,0.07),transparent 70%),radial-gradient(50% 40% at 8% 65%,rgba(255,255,255,0.05),transparent 70%),#0A0A0A">
+<a href="#conteudo" onClick="{{ skipToContent }}" style="position:absolute;left:16px;top:-80px;z-index:100;background:#fff;color:#111;padding:12px 18px;font-size:14px;text-decoration:none" style-focus="top:16px">Pular para o conteúdo</a>
+
+<header style="position:sticky;top:0;z-index:40;height:0;padding:0 clamp(12px,3vw,40px)">
+  <div style="position:relative;top:14px;max-width:1360px;margin:0 auto;border-radius:28px;background:rgba(22,24,24,0.66);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,0.22);box-shadow:0 8px 32px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.18);overflow:hidden">
+  <div style="padding:0 clamp(18px,2.5vw,32px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#/" aria-label="Casa de campo — início" style="display:flex;flex-direction:column;gap:5px;text-decoration:none;color:#fff">
+      <span style="font-size:15px;font-weight:600;letter-spacing:0.32em;line-height:1">CASA DE CAMPO</span>
+      <span style="font-size:9.5px;font-weight:500;letter-spacing:0.34em;line-height:1;color:#fff">À VENDA</span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Principal" style="display:flex;align-items:center;gap:36px">
+        <ul style="list-style:none;margin:0;padding:0;display:flex;gap:clamp(16px,2.4vw,30px)">
+          <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="3">
+            <li><a href="{{ item.href }}" style="font-size:14px;font-weight:500;color:#fff;text-decoration:none;white-space:nowrap;padding:8px 0;border-bottom:1px solid transparent;transition:border-color .2s" style-hover="border-bottom-color:#fff;color:#fff">{{ item.label }}</a></li>
+          </sc-for>
+        </ul>
+        <a href="{{ archCta.href }}" target="{{ archCta.target }}" rel="{{ archCta.rel }}" data-cta="menu" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .2s,color .2s;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-radius:999px;border:1px solid rgba(255,255,255,0.75);box-shadow:inset 0 1px 0 rgba(255,255,255,0.3),0 0 0 1px rgba(255,255,255,0.18),0 0 18px rgba(255,255,255,0.35),0 0 42px rgba(255,255,255,0.14);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.35),0 0 0 1px rgba(255,255,255,0.3),0 0 24px rgba(255,255,255,0.5),0 0 56px rgba(255,255,255,0.2)">Falar com o arquiteto</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuExpanded }}" aria-controls="menu-movel" style="min-height:44px;min-width:44px;padding:0 14px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.35);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 6px 24px rgba(0,0,0,0.18);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:rgba(255,255,255,0.6)">
+        <span>{{ menuLabel }}</span>
+        <span aria-hidden="true" style="display:flex;flex-direction:column;gap:4px;width:16px"><span style="height:1px;background:#fff;display:block"></span><span style="height:1px;background:#fff;display:block"></span></span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+    <nav id="menu-movel" aria-label="Menu móvel" style="border-top:1px solid rgba(255,255,255,0.2);padding:8px clamp(18px,2.5vw,32px) 24px">
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+        <sc-for list="{{ navItems }}" as="item">
+          <li style="border-bottom:1px solid rgba(255,255,255,0.18)"><a href="{{ item.href }}" style="display:flex;align-items:center;min-height:60px;font-size:24px;font-weight:500;letter-spacing:-0.01em;color:#fff;text-decoration:none">{{ item.label }}</a></li>
+        </sc-for>
+      </ul>
+      <a href="{{ archCta.href }}" target="{{ archCta.target }}" rel="{{ archCta.rel }}" data-cta="menu-movel" style="margin-top:24px;display:flex;justify-content:center;align-items:center;min-height:56px;font-size:15px;font-weight:600;text-decoration:none;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-radius:999px;border:1px solid rgba(255,255,255,0.75);box-shadow:inset 0 1px 0 rgba(255,255,255,0.3),0 0 0 1px rgba(255,255,255,0.18),0 0 18px rgba(255,255,255,0.35),0 0 42px rgba(255,255,255,0.14);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.35),0 0 0 1px rgba(255,255,255,0.3),0 0 24px rgba(255,255,255,0.5),0 0 56px rgba(255,255,255,0.2)">Falar com o arquiteto</a>
+    </nav>
+  </sc-if>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1" style="flex:1;outline:none">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Home" style="position:relative">
+  {{ scrollLine }}
+  <div id="inicio" style="position:relative;height:{{ heroTrack }}">
+  <section aria-labelledby="hero-title" style="position:sticky;top:0;height:100svh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#2A2C2B;color:#fff">
+    <img src="./assets/hero-frames/f001.jpg" alt="Vista aérea em movimento da casa de campo em concreto, com espelho d'água central e jardins ao entardecer" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%">
+    {{ heroVideo }}
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,12,0.15) 0%,rgba(10,12,12,0.38) 35%,rgba(10,12,12,0.7) 70%,rgba(10,12,12,0.86) 100%)"></div>
+    {{ scrollCue }}
+    <div style="position:relative;width:100%;max-width:1440px;margin:0 auto;padding:clamp(120px,18vw,240px) clamp(20px,5vw,72px) clamp(96px,9vw,128px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(28px,4vw,48px);text-shadow:0 1px 18px rgba(0,0,0,0.35)">
+      <p style="margin:0;font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#fff">Casa de campo · À venda</p>
+      <h1 id="hero-title" style="margin:0 auto;text-align:center;font-size:clamp(30px,4.4vw,72px);line-height:1.02;letter-spacing:-0.015em;font-family:'Jost',sans-serif;font-weight:300;text-wrap:balance"><span style="display:block">Arquitetura extraordinária.</span><span style="display:block;font-family:'Jost',sans-serif;font-weight:200;letter-spacing:-0.01em">Uma experiência singular de morar.</span></h1>
+      <div style="display:flex;flex-direction:column;gap:28px;align-items:center">
+        <p style="margin:0;max-width:440px;font-size:clamp(16px,1.35vw,18px);line-height:1.6;color:#fff;text-wrap:pretty">Uma residência de alto padrão concebida para unir sofisticação, conforto e conexão com a natureza.</p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+          <a href="{{ archCta.href }}" target="{{ archCta.target }}" rel="{{ archCta.rel }}" data-cta="hero" style="flex-shrink:0;white-space:nowrap;display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:0 24px;font-size:15px;font-weight:600;text-decoration:none;transition:background .2s;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-radius:999px;border:1px solid rgba(255,255,255,0.75);box-shadow:inset 0 1px 0 rgba(255,255,255,0.3),0 0 0 1px rgba(255,255,255,0.18),0 0 18px rgba(255,255,255,0.35),0 0 42px rgba(255,255,255,0.14);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.35),0 0 0 1px rgba(255,255,255,0.3),0 0 24px rgba(255,255,255,0.5),0 0 56px rgba(255,255,255,0.2)"><span>Falar com o arquiteto</span><span aria-hidden="true">→</span></a>
+          <a href="#/fotos" style="flex-shrink:0;white-space:nowrap;display:inline-flex;align-items:center;min-height:54px;padding:0 24px;font-size:15px;font-weight:600;text-decoration:none;transition:background .2s,color .2s;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.35);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 6px 24px rgba(0,0,0,0.18);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:rgba(255,255,255,0.6)">Ver ambientes</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <section id="casa" aria-labelledby="casa-title" style="scroll-margin-top:0;min-height:100svh;display:flex;align-items:center">
+    <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(112px,13vw,180px) clamp(20px,5vw,72px);display:flex;flex-direction:column;gap:clamp(56px,8vw,112px)">
+      <div style="display:flex;justify-content:center">
+        <h2 id="casa-title" style="margin:0;width:100%;font-size:clamp(24px,6.2vw,88px);line-height:1.05;letter-spacing:-0.03em;font-weight:400;white-space:nowrap;text-align:center">Um refúgio de exclusividade.</h2>
+      </div>
+      <dl ref="{{ specsRef }}" style="margin:0;display:grid;width:100%;max-width:920px;margin-inline:auto;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(10px,1.4vw,16px)">
+        <sc-for list="{{ specs }}" as="s" hint-placeholder-count="5">
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.13);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.08);grid-column:{{ s.span }};min-width:0;padding:clamp(14px,2.4vw,32px);display:flex;flex-direction:column-reverse;gap:10px;justify-content:flex-end">
+            <dt style="font-size:clamp(13px,1.1vw,15px);color:#A9A9A6">{{ s.k }}</dt>
+            <dd aria-label="{{ s.full }}" data-count="{{ s.max }}" data-unit="{{ s.u }}" style="margin:0;font-size:clamp(24px,4vw,56px);font-weight:500;letter-spacing:-0.03em;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums">{{ s.v }}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </div>
+  </section>
+
+  <section id="estar" aria-label="Sala de estar" style="position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#2A2C2B;color:#fff">
+    <img src="./assets/images/living-integrado.jpg" alt="Sala de estar com piso em granilite, sofá claro, poltrona e grandes portas de vidro abertas para o jardim" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,12,0) 55%,rgba(10,12,12,0.5) 82%,rgba(10,12,12,0.8) 100%)"></div>
+    <p style="position:relative;width:100%;max-width:1440px;margin:0 auto;padding:0 clamp(20px,5vw,72px) clamp(40px,6vw,80px);font-size:clamp(16px,1.35vw,18px);color:#fff;text-shadow:0 1px 18px rgba(0,0,0,0.35)">Estar integrado ao jardim</p>
+  </section>
+
+  <section id="fotos" aria-labelledby="fotos-title" style="scroll-margin-top:80px;border-top:1px solid rgba(255,255,255,0.1)">
+    <div style="max-width:1440px;margin:0 auto;padding:clamp(80px,11vw,160px) clamp(20px,5vw,72px);display:flex;flex-direction:column;gap:clamp(72px,10vw,144px)">
+      <h2 id="fotos-title" style="margin:0;font-size:clamp(32px,4.4vw,60px);line-height:1.05;letter-spacing:-0.025em;font-family:'Jost',sans-serif;font-weight:300">Ambientes</h2>
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:32px clamp(40px,6vw,96px)">
+        <button type="button" onClick="{{ openCur }}" aria-label="Ampliar foto atual" onMouseEnter="{{ pauseSlides }}" onMouseLeave="{{ resumeSlides }}" style="position:relative;flex:3 1 520px;display:block;padding:0;border:0;background:#1A1A1A;border-radius:20px;overflow:hidden;cursor:zoom-in;aspect-ratio:16/10;max-height:80vh">
+          <sc-for list="{{ slides }}" as="s" hint-placeholder-count="1">
+            <img src="{{ s.src }}" alt="{{ s.alt }}" loading="lazy" decoding="async" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;clip-path:{{ s.clip }};z-index:{{ s.z }};transition:{{ s.tr }}">
+          </sc-for>
+        </button>
+        <div style="flex:2 1 300px;max-width:440px;display:flex;flex-direction:column;gap:28px">
+          <div aria-live="polite" style="display:grid">
+            <sc-for list="{{ slides }}" as="s" hint-placeholder-count="1">
+              <div aria-hidden="{{ s.hidden }}" style="grid-area:1/1;display:flex;flex-direction:column;gap:18px;opacity:{{ s.op }};transform:{{ s.tx }};transition:opacity .7s ease .35s,transform .9s cubic-bezier(.2,.7,.2,1) .35s">
+                <span style="font-size:13px;font-weight:600;color:#A9A9A6">{{ s.num }} / {{ s.total }}</span>
+                <h3 style="margin:0;font-size:clamp(28px,3vw,42px);line-height:1.08;letter-spacing:-0.015em;font-family:'Jost',sans-serif;font-weight:300">{{ s.title }}</h3>
+                <p style="margin:0;font-size:clamp(16px,1.35vw,18px);line-height:1.65;color:#D6D6D3;text-wrap:pretty">{{ s.text }}</p>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <button type="button" onClick="{{ prevSlide }}" aria-label="Foto anterior" style="width:48px;height:48px;border-radius:999px;border:1px solid rgba(255,255,255,0.35);background:rgba(255,255,255,0.08);color:#fff;font-size:18px;cursor:pointer;transition:background .2s" style-hover="background:rgba(255,255,255,0.2)">←</button>
+            <button type="button" onClick="{{ nextSlide }}" aria-label="Próxima foto" style="width:48px;height:48px;border-radius:999px;border:1px solid rgba(255,255,255,0.35);background:rgba(255,255,255,0.08);color:#fff;font-size:18px;cursor:pointer;transition:background .2s" style-hover="background:rgba(255,255,255,0.2)">→</button>
+            <div style="flex:1;display:flex;gap:6px">
+              <sc-for list="{{ slides }}" as="s" hint-placeholder-count="6">
+                <button type="button" onClick="{{ s.go }}" aria-label="Ir para foto {{ s.num }}" style="flex:1;height:24px;padding:0;border:0;background:transparent;cursor:pointer;display:flex;align-items:center"><span style="display:block;width:100%;height:2px;background:{{ s.bar }};transition:background .4s"></span></button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ hasLocation }}">
+    <section aria-labelledby="local-title" style="border-top:1px solid rgba(255,255,255,0.1)">
+      <div style="max-width:1440px;margin:0 auto;padding:clamp(80px,11vw,160px) clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px">
+        <h2 id="local-title" style="margin:0;font-size:clamp(32px,4.4vw,60px);line-height:1.05;letter-spacing:-0.025em;font-family:'Jost',sans-serif;font-weight:300">Localização</h2>
+        <p style="margin:0;max-width:40ch;font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:#D6D6D3">{{ location }}</p>
+      </div>
+    </section>
+  </sc-if>
+
+  <section id="contato" aria-labelledby="contato-title" style="scroll-margin-top:80px;position:relative;overflow:hidden;min-height:100svh;display:flex;align-items:center;background:#2A2C2B">
+    <img src="./assets/images/fachada-posterior.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,12,12,0.82) 0%,rgba(10,12,12,0.6) 45%,rgba(10,12,12,0.45) 100%)"></div>
+    <div style="position:relative;width:100%;max-width:1440px;margin:0 auto;padding:clamp(120px,12vw,180px) clamp(20px,5vw,72px) calc(clamp(80px,11vw,160px) + 120px);display:flex;flex-wrap:wrap;gap:56px clamp(40px,6vw,112px);align-items:flex-start">
+      <div style="flex:1 1 320px;max-width:440px;display:flex;flex-direction:column;gap:24px">
+        <h2 id="contato-title" style="margin:0;font-size:clamp(36px,5vw,72px);line-height:1.02;letter-spacing:-0.015em;font-family:'Jost',sans-serif;font-weight:300;text-wrap:balance">Descubra todos os detalhes desta <span style="font-family:'Jost',sans-serif;font-weight:200">propriedade.</span></h2>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#fff">Entre em contato com o arquiteto responsável para conhecer melhor a residência, esclarecer suas dúvidas e agendar uma visita privativa.</p>
+        <div style="display:flex;flex-direction:column;gap:6px;padding-top:4px">
+          <span style="font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#D6D6D3">Desenvolvedor responsável pelo site</span>
+          <span style="font-size:clamp(22px,2vw,28px);font-weight:500;letter-spacing:-0.01em;color:#fff">{{ architect }}</span>
+          <div style="display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:4px">
+            <a href="{{ emailHref }}" style="font-size:15px;color:#fff">{{ email }}</a>
+          </div>
+        </div>
+        <sc-if value="{{ waConfigured }}">
+          <a href="{{ waHref }}" target="_blank" rel="noopener noreferrer" data-cta="contato-direto" aria-label="Conversar pelo WhatsApp (abre em nova janela)" style="align-self:flex-start;white-space:nowrap;display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:0 24px;font-size:15px;font-weight:600;text-decoration:none;transition:background .2s,color .2s;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-radius:999px;border:1px solid rgba(255,255,255,0.75);box-shadow:inset 0 1px 0 rgba(255,255,255,0.3),0 0 0 1px rgba(255,255,255,0.18),0 0 18px rgba(255,255,255,0.35),0 0 42px rgba(255,255,255,0.14);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.35),0 0 0 1px rgba(255,255,255,0.3),0 0 24px rgba(255,255,255,0.5),0 0 56px rgba(255,255,255,0.2)"><span>WhatsApp</span><span aria-hidden="true">↗</span></a>
+        </sc-if>
+      </div>
+      <div style="flex:2 1 520px;max-width:760px;width:100%">
+        <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+          <div role="status" tabindex="-1" id="form-sucesso" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.13);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.08);padding:48px 32px;display:flex;flex-direction:column;gap:12px;outline:none">
+            <p style="margin:0;font-size:clamp(24px,2.6vw,34px);font-weight:500;letter-spacing:-0.02em">Pedido recebido.</p>
+            <p style="margin:0;font-size:16px;line-height:1.6;color:#D6D6D3">Entraremos em contato para combinar a visita.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" noValidate="{{ true }}" style="display:flex;flex-direction:column;gap:24px;background:rgba(18,20,20,0.45);border:1px solid rgba(255,255,255,0.13);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.08);padding:clamp(24px,4vw,40px)">
+          <sc-if value="{{ hasErrors }}">
+            <div role="alert" style="border:1px solid rgba(255,255,255,0.55);border-radius:14px;padding:14px 18px;display:flex;flex-direction:column;gap:6px">
+              <p style="margin:0;font-size:15px;font-weight:600">Revise os campos indicados.</p>
+              <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.6"><sc-for list="{{ errorList }}" as="e"><li><a href="{{ e.href }}" onClick="{{ e.focus }}">{{ e.msg }}</a></li></sc-for></ul>
+            </div>
+          </sc-if>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px">
+            <div style="display:flex;flex-direction:column;gap:8px;grid-column:1/-1">
+              <label for="f-nome" style="font-size:14px;font-weight:600">Nome</label>
+              <input id="f-nome" name="nome" type="text" autocomplete="name" value="{{ f.nome }}" onChange="{{ on.nome }}" onFocus="{{ formStart }}" aria-required="true" aria-invalid="{{ inv.nome }}" aria-describedby="e-nome" style="min-height:52px;padding:0 14px;background:rgba(255,255,255,0.06);border:{{ bc.nome }};border-radius:12px;font-size:16px;color:#fff">
+              <sc-if value="{{ err.nome }}"><p id="e-nome" style="margin:0;font-size:13.5px;font-weight:500">{{ err.nome }}</p></sc-if>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label for="f-email" style="font-size:14px;font-weight:600">E-mail</label>
+              <input id="f-email" name="email" type="email" inputMode="email" autocomplete="email" value="{{ f.email }}" onChange="{{ on.email }}" onFocus="{{ formStart }}" aria-required="true" aria-invalid="{{ inv.email }}" aria-describedby="e-email" style="min-height:52px;padding:0 14px;background:rgba(255,255,255,0.06);border:{{ bc.email }};border-radius:12px;font-size:16px;color:#fff">
+              <sc-if value="{{ err.email }}"><p id="e-email" style="margin:0;font-size:13.5px;font-weight:500">{{ err.email }}</p></sc-if>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label for="f-telefone" style="font-size:14px;font-weight:600">Telefone</label>
+              <input id="f-telefone" name="telefone" type="tel" inputMode="tel" autocomplete="tel" placeholder="(00) 00000-0000" value="{{ f.telefone }}" onChange="{{ on.telefone }}" onFocus="{{ formStart }}" aria-required="true" aria-invalid="{{ inv.telefone }}" aria-describedby="e-telefone" style="min-height:52px;padding:0 14px;background:rgba(255,255,255,0.06);border:{{ bc.telefone }};border-radius:12px;font-size:16px;color:#fff">
+              <sc-if value="{{ err.telefone }}"><p id="e-telefone" style="margin:0;font-size:13.5px;font-weight:500">{{ err.telefone }}</p></sc-if>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <label for="f-mensagem" style="font-size:14px;font-weight:600">Mensagem <span style="font-weight:400;color:#A9A9A6">(opcional)</span></label>
+            <textarea id="f-mensagem" name="mensagem" rows="4" placeholder="Melhor dia e horário para a visita." value="{{ f.mensagem }}" onChange="{{ on.mensagem }}" onFocus="{{ formStart }}" style="padding:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.22);border-radius:12px;font-size:16px;line-height:1.55;color:#fff;resize:vertical"></textarea>
+          </div>
+          <div role="status" aria-live="polite">
+            <sc-if value="{{ isUnconfigured }}"><p style="margin:0;border:1px solid rgba(255,255,255,0.55);border-radius:14px;padding:14px 18px;font-size:15px;line-height:1.6">{{ unconfiguredMsg }}</p></sc-if>
+            <sc-if value="{{ isError }}"><p style="margin:0;border:1px solid rgba(255,255,255,0.55);border-radius:14px;padding:14px 18px;font-size:15px;line-height:1.6">Não foi possível enviar agora. Tente novamente{{ errorAlt }}.</p></sc-if>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center">
+            <a href="#/privacidade" style="font-size:13px;color:#A9A9A6">Política de privacidade</a>
+            <div style="display:flex;flex-wrap:wrap;gap:12px">
+              <sc-if value="{{ waConfigured }}">
+                <a href="{{ formWaHref }}" target="_blank" rel="noopener noreferrer" data-cta="formulario-whatsapp" aria-label="Enviar pelo WhatsApp (abre em nova janela)" style="white-space:nowrap;display:inline-flex;align-items:center;gap:12px;min-height:54px;padding:0 22px;font-size:15px;font-weight:600;text-decoration:none;transition:background .2s,color .2s;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-radius:999px;border:1px solid rgba(255,255,255,0.75);box-shadow:inset 0 1px 0 rgba(255,255,255,0.3),0 0 0 1px rgba(255,255,255,0.18),0 0 18px rgba(255,255,255,0.35),0 0 42px rgba(255,255,255,0.14);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.35),0 0 0 1px rgba(255,255,255,0.3),0 0 24px rgba(255,255,255,0.5),0 0 56px rgba(255,255,255,0.2)"><span>WhatsApp</span><span aria-hidden="true">↗</span></a>
+              </sc-if>
+              <button type="submit" disabled="{{ isSending }}" aria-busy="{{ isSending }}" style="white-space:nowrap;display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:0 28px;font-size:15px;font-weight:600;cursor:pointer;opacity:{{ sendingOpacity }};transition:background .2s;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border-radius:999px;border:1px solid rgba(255,255,255,0.75);box-shadow:inset 0 1px 0 rgba(255,255,255,0.3),0 0 0 1px rgba(255,255,255,0.18),0 0 18px rgba(255,255,255,0.35),0 0 42px rgba(255,255,255,0.14);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.35),0 0 0 1px rgba(255,255,255,0.3),0 0 24px rgba(255,255,255,0.5),0 0 56px rgba(255,255,255,0.2)">{{ submitLabel }}</button>
+            </div>
+          </div>
+        </form>
+        </sc-if>
+      </div>
+    </div>
+    <footer style="position:absolute;left:0;right:0;bottom:0;color:#fff;background:rgba(18,20,20,0.32);backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);border-top:1px solid rgba(255,255,255,0.18);box-shadow:inset 0 1px 0 rgba(255,255,255,0.08)">
+  <div style="max-width:1440px;margin:0 auto;padding:40px clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;font-size:13px;color:#D6D6D3">
+    <span style="font-size:13px;font-weight:600;letter-spacing:0.32em;color:#fff">CASA DE CAMPO</span>
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center">
+      <sc-if value="{{ hasInstagram }}"><a href="{{ instagramHref }}" target="_blank" rel="noopener noreferrer" style="color:#D6D6D3" style-hover="color:#fff">Instagram</a></sc-if>
+      <a href="#/privacidade" style="color:#D6D6D3" style-hover="color:#fff">Privacidade</a>
+      <span>Yuri Navas · Arquiteto</span>
+      <span>© {{ year }}</span>
+    </div>
+  </div>
+</footer>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPrivacy }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Privacidade" style="max-width:1440px;margin:0 auto;padding:calc(92px + clamp(48px,8vw,112px)) clamp(20px,5vw,72px) clamp(80px,11vw,160px);display:flex;flex-wrap:wrap;gap:40px clamp(40px,6vw,112px)">
+  <div style="flex:1 1 280px;max-width:380px;display:flex;flex-direction:column;gap:20px">
+    <h1 style="margin:0;font-size:clamp(36px,4.6vw,64px);line-height:1.04;letter-spacing:-0.015em;font-family:'Jost',sans-serif;font-weight:300">Política de privacidade</h1>
+    <sc-if value="{{ showNotes }}"><p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:#D6D6D3;border:1px dashed rgba(255,255,255,0.4);border-radius:12px;padding:10px 14px">PENDENTE · Revisar com assessoria jurídica (LGPD).</p></sc-if>
+  </div>
+  <div style="flex:2 1 480px;max-width:760px;display:flex;flex-direction:column;gap:12px">
+    <sc-for list="{{ privacy }}" as="pv" hint-placeholder-count="4">
+      <section style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.13);border-radius:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.08);padding:28px;display:flex;flex-direction:column;gap:10px">
+        <h2 style="margin:0;font-size:19px;font-weight:600">{{ pv.title }}</h2>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:#D6D6D3">{{ pv.text }}</p>
+      </section>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isNotFound }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="404" style="max-width:1440px;margin:0 auto;padding:calc(92px + clamp(72px,12vw,160px)) clamp(20px,5vw,72px) clamp(72px,12vw,160px);display:flex;flex-direction:column;gap:24px">
+  <h1 style="margin:0;font-size:clamp(36px,5vw,72px);letter-spacing:-0.015em;font-family:'Jost',sans-serif;font-weight:300">Página não encontrada.</h1>
+  <div><a href="#/" style="display:inline-flex;align-items:center;min-height:54px;padding:0 24px;font-size:15px;font-weight:600;text-decoration:none;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.35);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 6px 24px rgba(0,0,0,0.18);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:rgba(255,255,255,0.6)">Voltar ao início</a></div>
+</div>
+</sc-if>
+</main>
+
+<sc-if value="{{ notHome }}" hint-placeholder-val="{{ false }}">
+<footer style="background:#050505;color:#fff;border-top:1px solid rgba(255,255,255,0.1)">
+  <div style="max-width:1440px;margin:0 auto;padding:40px clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;font-size:13px;color:#A9A9A6">
+    <span style="font-size:13px;font-weight:600;letter-spacing:0.32em;color:#fff">CASA DE CAMPO</span>
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center">
+      <sc-if value="{{ hasInstagram }}"><a href="{{ instagramHref }}" target="_blank" rel="noopener noreferrer" style="color:#A9A9A6" style-hover="color:#fff">Instagram</a></sc-if>
+      <a href="#/privacidade" style="color:#A9A9A6" style-hover="color:#fff">Privacidade</a>
+      <span>© {{ year }}</span>
+    </div>
+  </div>
+</footer>
+</sc-if>
+
+<sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Visualizar foto" onClick="{{ lbClose }}" style="position:fixed;inset:0;z-index:80;background:rgba(5,5,5,0.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,64px)">
+    {{ lbImg }}
+    <button type="button" onClick="{{ lbClose }}" aria-label="Fechar" style="position:absolute;top:20px;right:20px;width:48px;height:48px;font-size:22px;cursor:pointer;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.35);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 6px 24px rgba(0,0,0,0.18);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:rgba(255,255,255,0.6)">×</button>
+    <button type="button" onClick="{{ lbPrev }}" aria-label="Foto anterior" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:20px;cursor:pointer;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.35);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 6px 24px rgba(0,0,0,0.18);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:rgba(255,255,255,0.6)">←</button>
+    <button type="button" onClick="{{ lbNext }}" aria-label="Próxima foto" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:20px;cursor:pointer;background:rgba(255,255,255,0.12);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.35);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 6px 24px rgba(0,0,0,0.18);color:#fff;transition:background .2s,border-color .2s,box-shadow .3s" style-hover="background:rgba(255,255,255,0.24);color:#fff;border-color:rgba(255,255,255,0.6)">→</button>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5511940636267&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Integrações&quot;},&quot;formEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Integrações&quot;},&quot;showPendingNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conteúdo&quot;}}">
+class Component extends DCLogic {
+  // Dados do imóvel — valores PROVISÓRIOS de demonstração. Confirmar antes de publicar.
+  // O preço não é exibido no site: o valor é informado apenas pelo arquiteto.
+  PROPERTY = {
+    specs: [
+      { icon: 'area', value: '650', unit: 'm²', label: 'Área construída' },
+      { icon: 'land', value: '5.000', unit: 'm²', label: 'Área do terreno' },
+      { icon: 'bed', value: '5', unit: '', label: 'Dormitórios' },
+      { icon: 'suite', value: '5', unit: '', label: 'Suítes' },
+      { icon: 'car', value: '4', unit: '', label: 'Vagas de garagem' }
+    ],
+    gallery: [{"title":"Fachada principal","text":"Volume em concreto aparente sobre o espelho d’água central, com jardins simétricos que conduzem à entrada.","src":"./assets/images/fachada-principal.jpg","alt":"Fachada principal em concreto com espelho d’água central e jardins ao entardecer"},{"title":"Living integrado","text":"Piso em granilite, painéis de madeira e portas de vidro do piso ao teto que abrem a sala para o pátio interno.","src":"./assets/images/living-integrado.jpg","alt":"Living com piso em granilite, sofá claro e portas de vidro abertas para o pátio"},{"title":"Cozinha","text":"Ilha monolítica em pedra natural, marcenaria em madeira e luz natural filtrada pelo jardim.","src":"./assets/images/cozinha.jpg","alt":"Cozinha com ilha em pedra natural, banquetas e marcenaria em madeira"},{"title":"Vista lateral","text":"Os volumes se acomodam no terreno e se iluminam ao entardecer, em diálogo com o gramado e a vegetação.","src":"./assets/images/vista-lateral.jpg","alt":"Vista lateral da casa em concreto iluminada ao entardecer, com gramado em primeiro plano"},{"title":"Fachada posterior","text":"Piscina com borda infinita, lounge externo e espaço gourmet integrados às suítes e ao living.","src":"./assets/images/fachada-posterior.jpg","alt":"Fachada posterior com piscina, lounge externo e ambientes iluminados ao entardecer"},{"title":"Sala de estar","text":"Pé-direito generoso, tons de travertino e vista ampla para a paisagem em todos os pontos da sala.","src":"./assets/images/sala-de-estar.jpg","alt":"Sala de estar em tons claros com sofás modulares e vista para a paisagem ao pôr do sol"}]
+  };
+
+  CONFIG = {
+    location: '',
+    architect: 'Yuri Navas',
+    email: 'metodonavas1@gmail.com',
+    phone: '5511940636267',
+    instagram: '',
+    message: 'Olá, Yuri! Vi o site da Casa de campo e gostaria de falar sobre a residência.'
+  };
+
+  countP = 0;
+  specsRef = el => {
+    if (this._cio) { this._cio.disconnect(); this._cio = null; }
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    this._cio = new IntersectionObserver(es => es.forEach(en => en.isIntersecting ? this.runCount() : this.resetCount()), { threshold: 0.35 });
+    this._cio.observe(el);
+  };
+  runCount() {
+    cancelAnimationFrame(this._raf);
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { this.countP = 1; this.paintCount(); return; }
+    const t0 = performance.now(), dur = 3200;
+    const tick = t => { const x = Math.min(1, (t - t0) / dur); this.countP = x < 0.7 ? (x / 0.7) * 0.85 : 0.85 + 0.15 * (1 - Math.pow(1 - (x - 0.7) / 0.3, 3)); this.paintCount(); if (x < 1) this._raf = requestAnimationFrame(tick); };
+    this._raf = requestAnimationFrame(tick);
+  }
+  resetCount() { cancelAnimationFrame(this._raf); this.countP = 0; this.paintCount(); }
+  paintCount() {
+    if (!this._dds || !this._dds.length || !this._dds[0].isConnected) this._dds = Array.from(document.querySelectorAll('dd[data-count]'));
+    const p = this.countP;
+    this._dds.forEach(d => { const t = Math.round(Number(d.dataset.count) * p).toLocaleString('pt-BR') + (d.dataset.unit || ''); if (d.textContent !== t) d.textContent = t; });
+  }
+
+  cueRef = React.createRef();
+  onSmokeScroll() {
+    if (this._smokeRaf) return;
+    this._smokeRaf = requestAnimationFrame(() => {
+      this._smokeRaf = 0;
+      const vh = window.innerHeight;
+      const cue = this.cueRef.current;
+      if (cue) cue.style.opacity = String(Math.max(0, 1 - window.scrollY / (vh * 0.25)));
+      this.updateRail(vh);
+    });
+  }
+  RAIL = [['inicio', 'Início'], ['casa', 'A casa'], ['estar', 'Estar'], ['fotos', 'Ambientes'], ['contato', 'Contato']];
+  railMarks = [];
+  railFill = React.createRef(); railDot = React.createRef(); railLabel = React.createRef();
+  updateRail(vh) {
+    const fl = this.railFill.current; if (!fl) return;
+    const n = this.RAIL.length, mid = vh * 0.45;
+    const tops = this.RAIL.map(r => { const el = document.getElementById(r[0]); return el ? el.getBoundingClientRect().top : Infinity; });
+    let a = 0; tops.forEach((t, i) => { if (t <= mid) a = i; });
+    let pos = a < n - 1 ? a + Math.max(0, Math.min(1, (mid - tops[a]) / Math.max(1, tops[a + 1] - tops[a]))) : n - 1;
+    if (window.scrollY + vh >= document.documentElement.scrollHeight - 4) { a = n - 1; pos = n - 1; }
+    const p = pos / (n - 1);
+    fl.style.transform = 'scaleY(' + p + ')';
+    this.railDot.current.style.top = (p * 100) + '%';
+    const lb = this.railLabel.current;
+    if (lb.dataset.a !== String(a)) { lb.dataset.a = String(a); lb.textContent = String(a + 1).padStart(2, '0') + ' — ' + this.RAIL[a][1]; lb.style.top = (a / (n - 1) * 100) + '%'; }
+    this.railMarks.forEach((m, i) => { if (!m) return; const d = m.firstChild; d.style.background = i <= a ? '#fff' : 'rgba(255,255,255,0.45)'; d.style.transform = i === a ? 'scale(1.6)' : 'scale(1)'; m.setAttribute('aria-current', i === a ? 'true' : 'false'); });
+  }
+  lineEl() {
+    if (this.state.w < 900) return null;
+    const e = React.createElement, n = this.RAIL.length;
+    const go = id => ev => { ev.preventDefault(); const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - (id === 'inicio' || id === 'estar' ? 0 : 80), behavior: 'smooth' }); };
+    return e('nav', { 'aria-label': 'Seções da página', style: { position: 'fixed', left: this.state.w < 1200 ? 14 : 'max(36px, calc(clamp(20px,5vw,72px) - 18px))', top: '26vh', height: '48vh', width: 1, zIndex: 35 } },
+      e('div', { style: { position: 'absolute', left: 0, top: 0, bottom: 0, width: 1, background: 'rgba(255,255,255,0.2)', overflow: 'hidden' } },
+        e('div', { style: { position: 'absolute', left: 0, width: 1, height: '30%', background: 'linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,0.95),rgba(255,255,255,0))', animation: 'railFlow 3.2s ease-in-out infinite' } })),
+      e('div', { ref: this.railFill, style: { position: 'absolute', left: 0, top: 0, bottom: 0, width: 1, background: '#fff', transformOrigin: 'top', transform: 'scaleY(0)', transition: 'transform .3s ease-out', boxShadow: '0 0 8px rgba(255,255,255,0.6)' } }),
+      this.RAIL.map((r, i) => e('a', { key: r[0], href: '#/' + r[0], onClick: go(r[0]), 'aria-label': r[1], ref: el => { this.railMarks[i] = el; }, style: { position: 'absolute', left: -10, top: (i / (n - 1) * 100) + '%', width: 21, height: 21, marginTop: -10.5, display: 'flex', alignItems: 'center', justifyContent: 'center' } },
+        e('span', { style: { width: 5, height: 5, borderRadius: '50%', background: 'rgba(255,255,255,0.45)', transition: 'transform .3s, background .3s' } }))),
+      e('div', { ref: this.railDot, 'aria-hidden': 'true', style: { position: 'absolute', left: -3.5, top: 0, width: 8, height: 8, marginTop: -4, borderRadius: '50%', background: '#fff', boxShadow: '0 0 14px rgba(255,255,255,0.95)', animation: 'railPulse 1.8s ease-in-out infinite', transition: 'top .3s ease-out', pointerEvents: 'none' } }),
+      e('div', { ref: this.railLabel, 'aria-live': 'polite', style: { display: this.state.w < 1200 ? 'none' : 'block', position: 'absolute', right: '100%', marginRight: 12, top: 0, transform: 'translateY(-50%) rotate(180deg)', writingMode: 'vertical-rl', fontSize: 11, fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', whiteSpace: 'nowrap', color: '#fff', textShadow: '0 1px 10px rgba(0,0,0,0.6)', transition: 'top .45s cubic-bezier(.4,0,.2,1)', pointerEvents: 'none' } }, '01 — Início'));
+  }
+  cueEl() {
+    const e = React.createElement;
+    return e('a', { ref: this.cueRef, href: '#/casa', onClick: ev => { ev.preventDefault(); const s = document.getElementById('casa'); if (s) window.scrollTo({ top: s.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' }); }, 'aria-label': 'Rolar para continuar', style: { position: 'absolute', left: this.state.w < 1100 ? 'auto' : '50%', right: this.state.w < 1100 ? 'clamp(20px,5vw,72px)' : 'auto', bottom: 20, transform: this.state.w < 1100 ? 'none' : 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, color: '#fff', textDecoration: 'none', fontSize: 11, fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', transition: 'opacity .3s' } },
+      e('span', null, 'Role'),
+      e('span', { style: { position: 'relative', width: 1, height: 44, background: 'rgba(255,255,255,0.25)', overflow: 'hidden' } },
+        e('span', { style: { position: 'absolute', inset: 0, background: '#fff', animation: 'scrollCue 2.2s cubic-bezier(.6,0,.3,1) infinite' } })));
+  }
+
+  FADE_SEL = 'h1,h2,h3,p,dl>div,form,details,a[data-cta],a[href="#/fotos"],a[href="#/"],button,li';
+  setupFade() {
+    if (typeof IntersectionObserver === 'undefined' || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+    const main = document.getElementById('conteudo'); if (!main) return;
+    if (!this._fadeIo) this._fadeIo = new IntersectionObserver(es => es.forEach(en => {
+      const el = en.target;
+      el.style.opacity = en.isIntersecting ? '1' : '0';
+      el.style.transform = en.isIntersecting ? 'none' : 'translateY(18px)';
+    }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    const scan = () => main.querySelectorAll(this.FADE_SEL).forEach(el => {
+      if (el.dataset.fade || el.closest('[role="dialog"]') || el.parentElement.closest('[data-fade]') && el.tagName !== 'BUTTON' && el.tagName !== 'A') return;
+      el.dataset.fade = '1';
+      el.style.transition = [el.style.transition, 'opacity .8s ease', 'transform .8s ease'].filter(Boolean).join(',');
+      el.style.opacity = '0'; el.style.transform = 'translateY(18px)';
+      this._fadeIo.observe(el);
+    });
+    scan();
+    if (!this._fadeMo) { this._fadeMo = new MutationObserver(() => { clearTimeout(this._fadeT); this._fadeT = setTimeout(scan, 60); }); this._fadeMo.observe(main, { childList: true, subtree: true }); }
+  }
+
+  // Sequência de quadros do hero controlada pela rolagem. A posição exibida
+  // persegue a posição alvo com suavização e mistura dois quadros vizinhos,
+  // então o movimento fica contínuo mesmo com rolagem em saltos (roda do mouse).
+  scrub(key, trackId, folder, N) {
+    return el => {
+      if (this[key]) { this[key].stop(); this[key] = null; }
+      if (!el) return;
+      const imgs = new Array(N), ctx = el.getContext('2d');
+      let pos = 0, target = 0, last = 0, raf = 0, drawn = '';
+      const src = k => './assets/' + folder + '/f' + String(k + 1).padStart(3, '0') + '.jpg';
+      const ok = im => im && im.complete && im.naturalWidth;
+      const nearest = k => { for (let d = 0; d < N; d++) { if (ok(imgs[k - d])) return imgs[k - d]; if (ok(imgs[k + d])) return imgs[k + d]; } return null; };
+      const paint = (im, alpha) => {
+        const W = el.width, H = el.height, s = Math.max(W / im.naturalWidth, H / im.naturalHeight), w = im.naturalWidth * s, hh = im.naturalHeight * s;
+        ctx.globalAlpha = alpha; ctx.drawImage(im, (W - w) / 2, (H - hh) * 0.6, w, hh);
+      };
+      const draw = () => {
+        const i = Math.floor(pos), f = pos - i, a = nearest(i); if (!a) return;
+        const key2 = i + ':' + Math.round(f * 40); if (key2 === drawn) return; drawn = key2;
+        paint(a, 1);
+        const b = f > 0.02 && i + 1 < N && ok(imgs[i + 1]) ? imgs[i + 1] : null;
+        if (b && b !== a) paint(b, f);
+        ctx.globalAlpha = 1;
+      };
+      const targetFor = () => {
+        const t = document.getElementById(trackId); if (!t) return 0;
+        const r = t.getBoundingClientRect(), span = r.height - window.innerHeight;
+        return (span > 0 ? Math.max(0, Math.min(1, -r.top / span)) : 0) * (N - 1);
+      };
+      const tick = t => {
+        const dt = last ? Math.min(0.1, (t - last) / 1000) : 1 / 60; last = t;
+        const d = target - pos;
+        pos = Math.abs(d) < 0.01 ? target : pos + d * (1 - Math.exp(-dt * 9));
+        draw();
+        raf = pos === target ? 0 : requestAnimationFrame(tick);
+        if (!raf) last = 0;
+      };
+      const kick = () => { target = targetFor(); if (!raf) raf = requestAnimationFrame(tick); };
+      const size = () => { const r = el.getBoundingClientRect(), d = Math.min(2, window.devicePixelRatio || 1); el.width = Math.round(r.width * d); el.height = Math.round(r.height * d); drawn = ''; draw(); };
+      const load = k => new Promise(res => { const im = new Image(); im.decoding = 'async'; im.onload = () => { drawn = ''; if (!raf) draw(); res(); }; im.onerror = res; im.src = src(k); imgs[k] = im; });
+      // Ordem grossa → fina: quadros espaçados primeiro, depois os intermediários.
+      const order = []; [16, 8, 4, 2, 1].forEach(st => { for (let k = 0; k < N; k += st) if (order.indexOf(k) < 0) order.push(k); });
+      if (order.indexOf(N - 1) < 0) order.splice(1, 0, N - 1);
+      (async () => {
+        await load(0); size(); pos = target = targetFor(); drawn = ''; draw(); el.style.opacity = '1';
+        let q = 1; const worker = async () => { while (q < order.length) await load(order[q++]); };
+        await Promise.all([worker(), worker(), worker(), worker(), worker(), worker()]);
+      })();
+      window.addEventListener('scroll', kick, { passive: true });
+      window.addEventListener('resize', size);
+      this[key] = { stop: () => { cancelAnimationFrame(raf); window.removeEventListener('scroll', kick); window.removeEventListener('resize', size); } };
+    };
+  }
+  heroCanvas = this.scrub('_hv', 'inicio', 'hero-frames', 110);
+  canvasEl(k, ref) { if (!this[k]) this[k] = React.createElement('canvas', { ref, 'aria-hidden': 'true', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0, transition: 'opacity .4s' } }); return this[k]; }
+  reducedMotion() { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
+
+  get PHOTOS() { return this.PROPERTY.gallery.filter(g => g.src).map(g => [g.src, g.alt]); }
+
+
+  emptyForm() { return { nome: '', email: '', telefone: '', mensagem: '' }; }
+
+  state = { path: 'inicio', w: typeof window !== 'undefined' ? window.innerWidth : 1280, menuOpen: false, form: this.emptyForm(), errors: {}, status: 'idle', started: false, lb: -1, slide: 0, prevSlide: -1 };
+
+  startSlides() { clearInterval(this._slideT); this._slideT = setInterval(() => { if (!this._slidePaused && !document.hidden) this.goSlide(this.state.slide + 1); }, 6000); }
+  goSlide(i) { const n = this.PROPERTY.gallery.length; const t = ((i % n) + n) % n; if (t === this.state.slide) return; this.setState(s => ({ prevSlide: s.slide, slide: t })); }
+  componentDidMount() {
+    // Pré-carrega a galeria para nenhuma foto surgir em branco durante a transição.
+    this._preload = this.PROPERTY.gallery.map(g => { const im = new Image(); im.decoding = 'async'; im.src = g.src; return im; });
+    this.startSlides();
+    this._hash = () => this.route();
+    this._resize = () => this.setState({ w: window.innerWidth, menuOpen: window.innerWidth >= 900 ? false : this.state.menuOpen });
+    this._key = e => {
+      if (e.key === 'Escape') this.setState({ menuOpen: false, lb: -1 });
+      if (this.state.lb >= 0 && e.key === 'ArrowRight') this.step(1);
+      if (this.state.lb >= 0 && e.key === 'ArrowLeft') this.step(-1);
+    };
+    this._click = e => {
+      const a = e.target && e.target.closest ? e.target.closest('a') : null;
+      if (!a) return;
+      const href = a.getAttribute('href') || '', ctx = a.getAttribute('data-cta');
+      if (href.indexOf('https://wa.me/') === 0) this.track('whatsapp_click', { context: ctx || 'geral' });
+      else if (ctx) this.track('contact_cta_click', { context: ctx });
+    };
+    window.addEventListener('hashchange', this._hash);
+    window.addEventListener('resize', this._resize);
+    window.addEventListener('keydown', this._key);
+    document.addEventListener('click', this._click);
+    this.route(true);
+    setTimeout(() => this.setupFade(), 150);
+    this._smoke = () => this.onSmokeScroll();
+    if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) { window.addEventListener('scroll', this._smoke, { passive: true }); window.addEventListener('resize', this._smoke); setTimeout(this._smoke, 100); }
+  }
+  componentWillUnmount() {
+    clearInterval(this._slideT);
+    window.removeEventListener('hashchange', this._hash);
+    window.removeEventListener('resize', this._resize);
+    window.removeEventListener('keydown', this._key);
+    document.removeEventListener('click', this._click);
+    if (this._fadeIo) this._fadeIo.disconnect(); if (this._fadeMo) this._fadeMo.disconnect();
+    window.removeEventListener('scroll', this._smoke); window.removeEventListener('resize', this._smoke);
+    if (this._cio) this._cio.disconnect();
+    cancelAnimationFrame(this._raf);
+  }
+
+  track(name, params) {
+    const detail = Object.assign({ event: name }, params || {});
+    try { if (Array.isArray(window.dataLayer)) window.dataLayer.push(detail); window.dispatchEvent(new CustomEvent('site:analytics', { detail })); } catch (e) {}
+  }
+
+  route(initial) {
+    const h = window.location.hash || '';
+    if (h && h.indexOf('#/') !== 0 && !initial) return;
+    const seg = h.indexOf('#/') === 0 ? (h.slice(2).split('/')[0] || 'inicio') : 'inicio';
+    const sections = ['casa', 'fotos', 'contato'];
+    const path = sections.indexOf(seg) >= 0 ? 'inicio' : seg;
+    this.setState({ path, menuOpen: false }, () => {
+      document.title = path === 'privacidade' ? 'Política de privacidade | Casa de campo' : 'Casa de campo à venda';
+      setTimeout(() => {
+        const el = sections.indexOf(seg) >= 0 && document.getElementById(seg);
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: initial ? 'auto' : 'smooth' });
+        else if (!initial) window.scrollTo(0, 0);
+      }, 40);
+    });
+  }
+
+  step(d) { const n = this.PHOTOS.length; this.setState(s => ({ lb: (s.lb + d + n) % n })); }
+
+  waNumber() { const n = String(this.props.whatsappNumber || this.CONFIG.phone).replace(/\D/g, ''); return /^\d{10,15}$/.test(n) ? n : ''; }
+  waLink(text) { const n = this.waNumber(); return n ? 'https://wa.me/' + n + '?text=' + encodeURIComponent(text) : ''; }
+
+  validate(f) {
+    const e = {};
+    if (!f.nome.trim()) e.nome = 'Informe seu nome.';
+    if (!f.email.trim()) e.email = 'Informe seu e-mail.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.trim())) e.email = 'E-mail inválido.';
+    if (f.telefone.replace(/\D/g, '').length < 10) e.telefone = 'Informe o telefone com DDD.';
+    return e;
+  }
+
+  focusField(k) { setTimeout(() => { const el = document.getElementById('f-' + k); if (el) el.focus(); }, 20); }
+
+  async submit(ev) {
+    ev.preventDefault();
+    if (this.state.status === 'sending') return;
+    const errors = this.validate(this.state.form);
+    const keys = Object.keys(errors);
+    if (keys.length) { this.setState({ errors, status: 'invalid' }); this.focusField(keys[0]); return; }
+    const endpoint = String(this.props.formEndpoint ?? '').trim();
+    if (!/^https:\/\//.test(endpoint)) {
+      const F = this.state.form, C = this.CONFIG;
+      const body = ['Nome: ' + F.nome, 'E-mail: ' + F.email, 'Telefone: ' + F.telefone, F.mensagem ? 'Mensagem: ' + F.mensagem : ''].filter(Boolean).join('\n');
+      window.location.href = 'mailto:' + C.email + '?subject=' + encodeURIComponent('Casa de campo — contato pelo site') + '&body=' + encodeURIComponent(body);
+      this.setState({ errors: {}, status: 'success' });
+      return;
+    }
+    this.setState({ errors: {}, status: 'sending' });
+    const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 15000);
+    try {
+      const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(Object.assign({}, this.state.form, { assunto: 'Visita — Casa de campo', origem: 'site' })), signal: ctrl.signal });
+      clearTimeout(t);
+      if (!res.ok) throw new Error('status ' + res.status);
+      this.setState({ status: 'success' });
+      this.track('contact_form_submit_success', {});
+      setTimeout(() => { const el = document.getElementById('form-sucesso'); if (el) el.focus(); }, 30);
+    } catch (e) {
+      clearTimeout(t);
+      this.setState({ status: 'error' });
+    }
+  }
+
+  renderVals() {
+    const { path, w, menuOpen, form, errors, status, lb } = this.state;
+    const C = this.CONFIG;
+    const isMobile = w < 900;
+    const showNotes = this.props.showPendingNotes ?? true;
+    const wa = !!this.waNumber();
+
+    const on = {};
+    Object.keys(this.emptyForm()).forEach(k => {
+      on[k] = e => {
+        const v = e.target.value;
+        this.setState(s => {
+          const f = Object.assign({}, s.form, { [k]: v });
+          const errs = Object.assign({}, s.errors);
+          if (errs[k]) { const ne = this.validate(f); if (ne[k]) errs[k] = ne[k]; else delete errs[k]; }
+          return { form: f, errors: errs, status: s.status === 'unconfigured' || s.status === 'error' ? 'idle' : s.status };
+        });
+      };
+    });
+    const fieldOrder = ['nome', 'email', 'telefone'];
+    const inv = {}, bc = {};
+    fieldOrder.forEach(k => { inv[k] = errors[k] ? 'true' : 'false'; bc[k] = errors[k] ? '2px solid #FFFFFF' : '1px solid rgba(255,255,255,0.22)'; });
+    const errorList = fieldOrder.filter(k => errors[k]).map(k => ({ msg: errors[k], href: '#f-' + k, focus: e => { e.preventDefault(); this.focusField(k); } }));
+
+    const f = form;
+    const waMsg = [C.message].concat([['Nome', f.nome], ['Telefone', f.telefone], ['Mensagem', f.mensagem]].filter(x => x[1] && x[1].trim()).map(x => x[0] + ': ' + x[1].trim())).join('\n');
+    const photo = lb >= 0 ? this.PHOTOS[lb] : null;
+
+    return {
+      isMobile, isDesktop: !isMobile, showMobileMenu: isMobile && menuOpen,
+      menuExpanded: menuOpen ? 'true' : 'false', menuLabel: menuOpen ? 'Fechar' : 'Menu',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      skipToContent: e => { e.preventDefault(); const m = document.getElementById('conteudo'); if (m) m.focus(); },
+      navItems: [['A casa', '#/casa'], ['Ambientes', '#/fotos'], ['Contato', '#/contato']].map(n => ({ label: n[0], href: n[1] })),
+      isHome: path === 'inicio', notHome: path !== 'inicio', isPrivacy: path === 'privacidade', isNotFound: path !== 'inicio' && path !== 'privacidade',
+      specs: this.PROPERTY.specs.map((s, i) => { const max = Number(String(s.value).replace(/\./g, '').replace(',', '.')) || 0; const cur = Math.round(max * this.countP); const u = s.unit ? ' ' + s.unit : ''; return { span: i < 2 ? 'span 3' : 'span 2', k: s.label, v: cur.toLocaleString('pt-BR') + u, full: s.value + u, max: String(max), u }; }),
+      specsRef: this.specsRef, scrollCue: this.cueEl(), heroVideo: this.canvasEl('_hvEl', this.heroCanvas),
+      heroTrack: this.reducedMotion() ? '100svh' : '400svh', scrollLine: this.lineEl(),
+      openCur: () => this.setState({ lb: this.state.slide }),
+      pauseSlides: () => { this._slidePaused = true; }, resumeSlides: () => { this._slidePaused = false; },
+      prevSlide: () => { this.goSlide(this.state.slide - 1); this.startSlides(); }, nextSlide: () => { this.goSlide(this.state.slide + 1); this.startSlides(); },
+      slides: this.PROPERTY.gallery.map((g, i) => { const on = i === this.state.slide, was = i === this.state.prevSlide, rm = this.reducedMotion(); return { src: g.src, alt: g.alt, title: g.title, text: g.text, num: String(i + 1).padStart(2, '0'), total: String(this.PROPERTY.gallery.length).padStart(2, '0'), clip: on || was ? 'inset(0 0% 0 0)' : 'inset(0 100% 0 0)', z: on ? 3 : was ? 2 : 1, tr: on && !rm ? 'clip-path 1.4s cubic-bezier(.77,0,.18,1)' : 'none', op: on ? 1 : 0, tx: on ? 'none' : 'translateX(-16px)', hidden: on ? 'false' : 'true', bar: on ? '#fff' : 'rgba(255,255,255,0.25)', go: () => { this.goSlide(i); this.startSlides(); } }; }),
+      archCta: wa ? { href: this.waLink(C.message), target: '_blank', rel: 'noopener noreferrer' } : { href: '#/contato', target: '_self', rel: '' },
+      lbOpen: !!photo, lbImg: photo ? React.createElement('img', { src: photo[0], alt: photo[1], style: { maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 12 } }) : null,
+      lbClose: e => { if (e && e.target !== e.currentTarget && e.target.tagName !== 'BUTTON') return; this.setState({ lb: -1 }); },
+      lbPrev: e => { e.stopPropagation(); this.step(-1); },
+      lbNext: e => { e.stopPropagation(); this.step(1); },
+      hasLocation: !!C.location, location: C.location,
+      email: C.email, emailHref: 'mailto:' + C.email,
+      hasInstagram: !!C.instagram, instagramHref: 'https://instagram.com/' + C.instagram.replace(/^@/, ''),
+      waConfigured: wa, waHref: this.waLink(C.message), formWaHref: this.waLink(waMsg), showNotes,
+      privacy: [
+        ['Dados coletados', 'Nome, e-mail, telefone e a mensagem enviada pelo formulário.'],
+        ['Finalidade', 'Responder ao seu contato e agendar a visita. Não usamos os dados para outros fins.'],
+        ['WhatsApp', 'Ao escolher o WhatsApp, a conversa segue as políticas dessa plataforma.'],
+        ['Seus direitos', 'Pela LGPD, você pode pedir acesso, correção ou exclusão dos seus dados a qualquer momento' + (C.email ? ' pelo e-mail ' + C.email : '') + '.']
+      ].map(x => ({ title: x[0], text: x[1] })),
+      year: new Date().getFullYear(),
+      f: form, err: errors, inv, bc, on,
+      formStart: () => { if (!this.state.started) { this.setState({ started: true }); this.track('contact_form_start', {}); } },
+      submit: e => this.submit(e),
+      hasErrors: errorList.length > 0, errorList,
+      isSending: status === 'sending', sendingOpacity: status === 'sending' ? 0.6 : 1,
+      architect: C.architect,
+      submitLabel: status === 'sending' ? 'Enviando…' : 'Falar com o arquiteto',
+      isSuccess: status === 'success', showForm: status !== 'success',
+      isUnconfigured: status === 'unconfigured', isError: status === 'error',
+      unconfiguredMsg: 'O envio ainda não está disponível.' + (wa ? ' Use o botão WhatsApp.' : (C.email ? ' Escreva para ' + C.email + '.' : '')),
+      errorAlt: wa ? ' ou use o WhatsApp' : ''
+    };
+  }
+}
+</script>
+</body>
+</html>
